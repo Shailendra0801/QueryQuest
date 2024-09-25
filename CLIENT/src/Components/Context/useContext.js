@@ -1,8 +1,14 @@
-// useContext.js
-
 import { createContext, useContext, useState } from "react";
 
-const RestaurantContext = createContext();
+// Initialize with default values
+const RestaurantContext = createContext({
+    selectedItems: [],
+    setSelectedItems: () => {},
+    location: "",
+    setLocation: () => {},
+    rating: "",
+    setRating: () => {},
+});
 
 const Provider = ({ children }) => {
     const [selectedItems, setSelectedItems] = useState([]);
@@ -27,7 +33,11 @@ const Provider = ({ children }) => {
 
 // Custom hook for consuming context
 const useRestaurantContext = () => {
-    return useContext(RestaurantContext);
+    const context = useContext(RestaurantContext);
+    if (context === undefined) {
+        throw new Error("useRestaurantContext must be used within a Provider");
+    }
+    return context;
 };
 
 export { Provider, useRestaurantContext };
