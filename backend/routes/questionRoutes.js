@@ -4,6 +4,6 @@ const { getQuestions, addQuestions} = require('../controllers/questionsControlle
 
 // Routes
 router.get('/', getQuestions);
-router.get('/', addQuestions);
+router.get('/add', addQuestions);
 
 module.exports = router;

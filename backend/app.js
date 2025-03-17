@@ -10,7 +10,7 @@ app.use(cors());
 
 // Importing routes
 const questionRoutes = require('./routes/questionRoutes');
-app.use('api/questions', questionRoutes);
+app.use('/api/questions', questionRoutes);
 
 // Connecting DB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true})
@@ -19,4 +19,4 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 // Starting server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log("Server running on port ${PORT"));
+app.listen(PORT, () => console.log("Server running on port ${PORT}"));
